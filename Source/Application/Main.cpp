@@ -9,7 +9,9 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-	INFO_LOG("Initialize Engine...")
+	gladLoadGLLoader((GLADloadproc)SDL_GL_GetProcAddress);
+
+	INFO_LOG("Initialize Engine...");
 
 	//nc::MemoryTracker::Initialize();
 	nc::seedRandom((unsigned int)time(nullptr));

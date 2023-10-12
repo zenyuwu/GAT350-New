@@ -5,7 +5,7 @@ in layout(location = 1) vec3 color;
 in layout(location = 2) vec2 textcoord;
 
 out layout(location = 0) vec3 ocolor;
-out layout(location = 1) vec3 otextcoord;
+out layout(location = 1) vec2 otextcoord;
 
 uniform mat4 model;
 uniform mat4 view;
@@ -15,6 +15,7 @@ uniform mat4 projection;
 void main()
 {
 	ocolor = color;
+	otextcoord = textcoord;
 	mat4 mvp = projection * view * model;
 
 	//float xo = sin(time * 3 + position.y) * 0.5;

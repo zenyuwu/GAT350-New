@@ -20,10 +20,10 @@ namespace nc
 #ifdef INTERLEAVE
         //vertex data
         float vertexData[] = {
-            -0.8f, -0.8f, 0.0f, 1.0f, 0.63f, 0.99f,
-             -0.8f, 0.8f, 0.0f, 0.48f, 0.64f, 1.0f,
-             0.8f, -0.8f, 0.0f, 1.0f, 1.0f, 1.0f,
-             0.8f, 0.8f, 0.0f, 0.0f, 0.0f, 0.0f
+            -0.8f, -0.8f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
+            -0.8f,  0.8f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
+             0.8f, -0.8f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f,
+             0.8f,  0.8f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f
         };
 
         GLuint vbo;
@@ -34,7 +34,7 @@ namespace nc
         glGenVertexArrays(1, &m_vao);
         glBindVertexArray(m_vao);
 
-        glBindVertexBuffer(0, vbo, 0, 6 * sizeof(GLfloat));
+        glBindVertexBuffer(0, vbo, 0, 8 * sizeof(GLfloat));
 
         //position
         glEnableVertexAttribArray(0);
@@ -121,7 +121,7 @@ namespace nc
         ImGui::DragFloat3("Scale", &m_transform.scale[0]);
         ImGui::End();
 
-        m_transform.rotation.z += 180 * dt;
+        //m_transform.rotation.z += 180 * dt;
 
         m_transform.position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_A) ? m_speed * -dt : 0;
         m_transform.position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_D) ? m_speed * +dt : 0;
