@@ -11,14 +11,9 @@ namespace nc
     bool World03::Initialize()
     {
         m_material = GET_RESOURCE(Material, "materials/quad.mtrl");
+        m_material->Bind();
 
-        m_program = GET_RESOURCE(Program, "shaders/unlit_texture.prog");
-        m_program->Use();
-
-        /*m_texture = GET_RESOURCE(Texture, "textures/llama.png");
-        m_texture->Bind();
-        m_texture->SetActive(GL_TEXTURE0);*/
-
+        m_program = m_material->GetProgram();
 
         float vertexData[] = {
             -0.8f, -0.8f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
@@ -65,11 +60,11 @@ namespace nc
 
         //view matrix
         glm::mat4 view = glm::lookAt(glm::vec3{ 0, 0, 3 }, glm::vec3{0, 0, 0}, glm::vec3{ 0, 1, 0 });
-        m_program->SetUniform("view", view);
+        m_material->GetProgram()->SetUniform("view", view);
 
         //projection matrix
         glm::mat4 projection = glm::perspective(glm::radians(70.0f), 800.0f / 600.0f, 0.01f, 100.0f);
-        m_program->SetUniform("projection", projection);
+        m_material->GetProgram()->SetUniform("projection", projection);
 
         ENGINE.GetSystem<Gui>()->EndFrame();
     }
