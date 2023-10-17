@@ -31,6 +31,12 @@
     <ClInclude Include="Renderer.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="VertexBuffer.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Texture.cpp">
@@ -76,6 +82,12 @@
       <Filter>Source\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="..\..\ThirdParty\glad\src\glad.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexBuffer.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
