@@ -11,9 +11,9 @@ namespace nc
     bool World03::Initialize()
     {
         m_material = GET_RESOURCE(Material, "materials/quad.mtrl");
-        m_material->Bind();
+        //m_material->Bind();
 
-        m_program = m_material->GetProgram();
+        //m_program = m_material->GetProgram();
 
         float vertexData[] = {
             -0.8f, -0.8f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
@@ -22,7 +22,8 @@ namespace nc
              0.8f,  0.8f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f
         };
 
-        m_vertexBuffer = GET_RESOURCE(VertexBuffer, "vb");
+        m_vertexBuffer = std::make_shared<VertexBuffer>();
+        //m_vertexBuffer = GET_RESOURCE(VertexBuffer, "vb");
         m_vertexBuffer->CreateVertexBuffer(sizeof(vertexData), 4, vertexData);
         m_vertexBuffer->SetAttribute(0, 3, 8 * sizeof(GLfloat), 0);                  // position 
         m_vertexBuffer->SetAttribute(1, 3, 8 * sizeof(GLfloat), 3 * sizeof(float));  // color 
