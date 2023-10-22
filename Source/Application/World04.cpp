@@ -13,7 +13,7 @@ namespace nc
         auto material = GET_RESOURCE(Material, "materials/grid.mtrl");
         m_model = std::make_shared<Model>();
         m_model->SetMaterial(material);
-        m_model->Load("models/spot.obj");
+        m_model->Load("models/spot.obj", glm::vec3{0}, glm::vec3{90, 0, 0});
 
         return true;
     }
@@ -31,6 +31,12 @@ namespace nc
         ImGui::DragFloat3("Position", &m_transform.position[0], 0.1f);
         ImGui::DragFloat3("Rotation", &m_transform.rotation[0], 0.1f);
         ImGui::DragFloat3("Scale", &m_transform.scale[0], 0.1f);
+        ImGui::End();
+
+        ImGui::Begin("Light");
+        ImGui::DragFloat3("Position", &lightPosition[0], 0.1f);
+        ImGui::ColorEdit3("Color", &lightColor[0]);
+        ImGui::ColorEdit3("AmbientColor", &ambientLight[0]);
         ImGui::End();
 
         m_transform.position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_A) ? m_speed * -dt : 0;
@@ -54,16 +60,13 @@ namespace nc
         material->GetProgram()->SetUniform("view", view);
 
         //projection matrix
-        glm::mat4 projection = glm::perspective(glm::radians(70.0f), 800.0f / 600.0f, 0.01f, 100.0f);
+        glm::mat4 projection = glm::perspective(glm::radians(70.0f), ENGINE.GetSystem<Renderer>()->GetWidth() / (float)ENGINE.GetSystem<Renderer>()->GetHeight(), 0.01f, 100.0f);
         material->GetProgram()->SetUniform("projection", projection);
-
-        ImGui::Begin("Light");
-        ImGui::DragFloat3("Position", &lightPosition[0], 0.1f);
-        ImGui::ColorEdit3("Color", &lightColor[0]);
-        ImGui::End();
 
         material->GetProgram()->SetUniform("light.position", lightPosition);
         material->GetProgram()->SetUniform("light.color", lightColor);
+        material->GetProgram()->SetUniform("ambientLight", ambientLight);
+
 
         ENGINE.GetSystem<Gui>()->EndFrame();
     }

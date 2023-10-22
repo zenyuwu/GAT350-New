@@ -23,5 +23,6 @@ namespace nc
 		res_t<Model> m_model;
 		glm::vec3 lightPosition{ 0.0f, 0.0f, 3.0f };
 		glm::vec3 lightColor{ 1, 1, 1 };
+		glm::vec3 ambientLight{ 1,1,1 };
 	};
 }
