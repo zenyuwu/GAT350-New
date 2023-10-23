@@ -1,5 +1,10 @@
 #version 430
 
+#define POINT 0 
+#define DIRECTIONAL 1
+#define SPOT 2
+
+
 //input attributes from vertex shader
 in layout(location = 0) vec3 fposition;
 in layout(location = 1) vec3 fnormal;
@@ -9,7 +14,6 @@ in layout(location = 2) vec2 ftextcoord;
 out layout(location = 0) vec4 ocolor;
 
 //the actual texture
-layout(binding = 0) uniform sampler2D tex;
 
 //material properties
 uniform struct Material{
@@ -22,42 +26,52 @@ uniform struct Material{
 
 //light properties
 uniform struct Light{
+	int type;
 	vec3 position;
+	vec3 direction;
+
 	vec3 color;
+	float cutoff;
 } light;
 
 //ambient light
 uniform vec3 ambientLight;
 
+layout(binding = 0) uniform sampler2D tex;
+
+vec3 ads(in vec3 position, in vec3 normal){
+	//AMBIENT
+	vec3 ambient = ambientLight;
+
+	//DIFFUSE
+	vec3 lightDir = (light.type == DIRECTIONAL) ? normalize(-light.direction) : normalize(light.position - fposition);
+	float spotIntensity = 1;
+	if(light.type == SPOT){
+		float angle = acos(dot(light.direction, -lightDir));
+		if(angle > light.cutoff) spotIntensity = 0;
+	}
+
+	float intensity = max(dot(lightDir, normal), 0);
+	vec3 diffuse = material.diffuse * (light.color * intensity * spotIntensity);
+
+	//SPECULAR
+	vec3 specular = vec3(0);
+	if(intensity > 0){
+		vec3 reflectDir = reflect(-lightDir, normal);
+		vec3 viewDir = normalize(-fposition);
+		float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
+		vec3 specular = spec * light.color * material.specular;
+	}
+
+	return ambient + diffuse + specular;
+}
+
 void main()
 {
-//ambient lighting - computes the color of each fragment with ambient lighting applied
-	vec3 ambient = ambientLight * material.diffuse;
-
-//diffuse lighting
-	//normalizing the fnormal just in case
-	vec3 normal = normalize(fnormal);
-	//calculates light direction
-	vec3 lightDir = normalize(light.position - fposition);
-	//calculates intensity of diffuse light, and makes sure it's at least 0
-	float diff = max(dot(normal, lightDir), 0.0);
-	//calculates the diffuse color based on the intensity and the material
-	vec3 diffuse = diff * light.color * material.diffuse;
-
-//specular lighting
-	//calculates the view direction
-	vec3 viewDir = normalize(-fposition);
-	//calculates where the light would go after reflecting off the material
-	vec3 reflectDir = reflect(-lightDir, normal);
-	//finds the angle between the view direction and the light direction, then makes sure it's at least 0, then raises it to the power of the material's shininess
-	float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
-	//calculates the specular color based on the intensity and the material
-	vec3 specular = spec * light.color * material.specular;
-
 	//smashing everything together into one result
-	vec3 result = (ambient + diffuse + specular) * texture(tex, ftextcoord * material.tiling + material.offset).rgb;
+	vec3 result = ads(light.position, fnormal) * texture(tex, ftextcoord * material.tiling + material.offset).rgb;
 
 	//final color :))
 	ocolor = vec4(result, 1.0);
-
 }
+

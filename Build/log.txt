@@ -1,1 +1,3 @@
 INFO: Main.cpp(15) Initialize Engine...
+WARNING: Program.cpp(165) Could not find uniform location: material.specular
+WARNING: Program.cpp(165) Could not find uniform location: material.shininess

@@ -1,6 +1,8 @@
 {
   "program":"shaders/lit_texture.prog",
-  "textures": [ "textures/spot_diffuse.png" ],
+  "textures": [ "textures/color_grid.png" ],
+  "diffuse": {
+    "r": 1, "g": 1, "b": 1 },
   "color":[
       1,
       1,
