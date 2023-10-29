@@ -77,41 +77,41 @@ void phong(in Light light, in vec3 position, in vec3 normal, out vec3 diffuse, o
 	}
 }
 
-//void main()
-//{
-//	vec4 texcolor = texture(tex, ftexcoord);
-//	// set ambient light
-//	ocolor = vec4(ambientLight, 1) * texcolor;
-// 
-//	// set lights
-//	for (int i = 0; i < numLights; i++)
-//	{
-//		vec3 diffuse;
-//		vec3 specular;
-// 
-//		float attenuation = (lights[i].type == DIRECTIONAL) ? 1 : attenuation(lights[i].position, fposition, lights[i].range);
-// 
-//		phong(lights[i], fposition, fnormal, diffuse, specular);
-//		ocolor += ((vec4(diffuse, 1) * texcolor) + vec4(specular, 1)) * lights[i].intensity * attenuation;
-//	}
-//}
-
 void main()
 {
 	vec4 texcolor = texture(tex, ftexcoord);
+	// set ambient light
 	ocolor = vec4(ambientLight, 1) * texcolor;
-
-	for(int i = 0; i < numLights; i++){
-		vec3 diffuse, specular;
+ 
+	// set lights
+	for (int i = 0; i < numLights; i++)
+	{
+		vec3 diffuse;
+		vec3 specular;
+ 
+		float attenuation = (lights[i].type == DIRECTIONAL) ? 1 : attenuation(lights[i].position, fposition, lights[i].range);
+ 
 		phong(lights[i], fposition, fnormal, diffuse, specular);
-		ocolor += (vec4(diffuse, 1) * texcolor) + vec4(specular, 1);
-//	vec3 diffuse;
-//	vec3 specular;
-// 
-//	float attenuation = (lights[i].type == DIRECTIONAL) ? 1 : attenuation(lights[i].position, fposition, lights[i].range);
-// 
-//	phong(lights[i], fposition, fnormal, diffuse, specular);
-//	ocolor += ((vec4(diffuse, 1) * texcolor) + vec4(specular, 1)) * attenuation * lights[i].intensity;
+		ocolor += ((vec4(diffuse, 1) * texcolor) + vec4(specular, 1)) * lights[i].intensity * attenuation;
 	}
 }
+
+//void main()
+//{
+//	vec4 texcolor = texture(tex, ftexcoord);
+//	ocolor = vec4(ambientLight, 1) * texcolor;
+//
+//	for(int i = 0; i < numLights; i++){
+//		vec3 diffuse, specular;
+//		phong(lights[i], fposition, fnormal, diffuse, specular);
+//		ocolor += (vec4(diffuse, 1) * texcolor) + vec4(specular, 1);
+////		vec3 diffuse;
+////		vec3 specular;
+//// 
+////		float attenuation = (lights[i].type == DIRECTIONAL) ? 1 : attenuation(lights[i].position, fposition, lights[i].range);
+//// 
+////		phong(lights[i], fposition, fnormal, diffuse, specular);
+////		ocolor += ((vec4(diffuse, 1) * texcolor) + vec4(specular, 1)) * attenuation * lights[i].intensity;
+//	}
+//}
 

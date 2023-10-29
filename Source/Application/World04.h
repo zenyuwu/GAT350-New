@@ -1,11 +1,8 @@
 #pragma once
 #include "Framework/World.h"
 #include "Renderer/Renderer.h"
-//#include "Renderer/Material.h"
 #include "Core/Math/Transform.h"
 #include <vector>
-
-#define POINT 0 //isn't supposed to be here??
 
 namespace nc
 {
@@ -22,7 +19,6 @@ namespace nc
 		glm::vec3 direction;
 		glm::vec3 color;
 
-		//float cutoff;
 		float intensity;
 		float range;
 		float innerAngle;
@@ -41,7 +37,6 @@ namespace nc
 		float m_time = 0;
 		float m_speed = 5;
 
-		//light_t m_light;
 		light_t m_lights[3];
 		int m_selected = 0;
 		glm::vec3 ambientLight{ 1,1,1 };
