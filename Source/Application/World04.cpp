@@ -21,7 +21,13 @@ namespace nc
         m_model->SetMaterial(material);
         m_model->Load("models/plane.obj", glm::vec3{ 0, -0.7f, 0 }, glm::vec3{ 0 }, glm::vec3{ 0.4f });
 
-        for (int i = 0; i < 3; i++) {
+        std::cout << m_lights.size() << "\n";
+        m_lights.push_back(light_t{});
+
+        std::cout << "numLights: " + std::to_string(numLights) + "\n";
+        std::cout << m_lights.size() << "\n";
+
+        for (int i = 0; i < numLights; i++) {
             m_lights[i].type = light_t::eType::Point;
             m_lights[i].position = glm::vec3{ randomf(-5, 5), randomf(1, 8), randomf(-5, 5) };
             m_lights[i].direction = glm::vec3{ 0, -1, 0 };
@@ -51,12 +57,35 @@ namespace nc
         ImGui::ColorEdit3("Ambient Color", glm::value_ptr(ambientLight));
         ImGui::Separator();
 
-        for (int i = 0; i < 3; i++)
+        int lightToRemove = -1;
+        for (int i = 0; i < numLights; i++)
         {
             std::string name = "light" + std::to_string(i);
             if (ImGui::Selectable(name.c_str(), m_selected == i)) m_selected = i;
+            if (ImGui::Button(("X" + std::to_string(i)).c_str()) && numLights > 1) {
+                lightToRemove = i;
+            }
+            ImGui::Separator();
+        }
+        if (ImGui::Button("Add Light") && numLights < 9) {
+            m_lights.push_back(light_t{});
+            m_lights.back().type = light_t::eType::Spot;
+            m_lights.back().position = glm::vec3{ -0.09f, 3.0f, -3.3f };
+            m_lights.back().direction = glm::vec3{ 0.0f, -1.0f, 0.0f };
+            m_lights.back().color = glm::vec3{ 1.0f, 1.0f, 1.0f };
+            m_lights.back().intensity = 1.0f;
+            m_lights.back().range = 10.0f;
+            m_lights.back().innerAngle = 10.0f;
+            m_lights.back().outerAngle = 30.0f;
+            numLights++;
         }
         ImGui::End();
+
+        if (lightToRemove != -1) {
+            m_lights.erase(m_lights.begin() + lightToRemove);
+            numLights--;
+            m_selected = 0;
+        }
 
         //LIGHT
         ImGui::Begin("Light");
@@ -80,8 +109,10 @@ namespace nc
         material->ProcessGui();
         material->Bind();
 
+        material->GetProgram()->SetUniform("numLights", numLights);
+
         //light uniforms
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < numLights; i++) {
             std::string name = "lights[" + std::to_string(i) + "]";
             material->GetProgram()->SetUniform(name + ".type", m_lights[i].type);
             material->GetProgram()->SetUniform(name + ".position", m_lights[i].position);

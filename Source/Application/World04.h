@@ -37,7 +37,8 @@ namespace nc
 		float m_time = 0;
 		float m_speed = 5;
 
-		light_t m_lights[3];
+		std::vector<light_t> m_lights;
+		int numLights = 1;
 		int m_selected = 0;
 		glm::vec3 ambientLight{ 1,1,1 };
 

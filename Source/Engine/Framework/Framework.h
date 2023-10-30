@@ -7,6 +7,8 @@
 
 #include "Components/Component.h"
 
+#include "Components/CameraComponent.h"
+
 #include "Components/RenderComponent.h"
 #include "Components/ModelComponent.h"
 

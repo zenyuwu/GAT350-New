@@ -31,9 +31,9 @@ namespace nc
 
 		friend class Actor;
 
+		std::list<std::unique_ptr<Actor>> m_actors;
 	private:
 		World* m_game = nullptr;
-		std::list<std::unique_ptr<Actor>> m_actors;
 	};
 
 	template<typename T>

@@ -12,7 +12,20 @@ namespace nc
     {
         m_scene = std::make_unique<Scene>();
 
-        {
+        { //creating camera
+            auto actor = CREATE_CLASS(Actor);
+            actor->name = "camera1";
+            actor->transform.position = glm::vec3{ 0, 0, 18 };
+            actor->transform.rotation = glm::vec3{ 0, 180, 0 };
+
+            auto cameraComponent = CREATE_CLASS(CameraComponent);
+            cameraComponent->SetPerspective(70.0f, (float)ENGINE.GetSystem<Renderer>()->GetWidth() / (float)ENGINE.GetSystem<Renderer>()->GetHeight(), 0.1f, 100.0f);
+            actor->AddComponent(std::move(cameraComponent));
+
+            m_scene->Add(std::move(actor));
+        }
+
+        { //creating squirrel
             auto actor = CREATE_CLASS(Actor);
             actor->name = "actor1";
             actor->transform.position = glm::vec3{ 0, 0, 0 };
@@ -24,7 +37,7 @@ namespace nc
             m_scene->Add(std::move(actor));
         }
 
-        {
+        { //creating light
             auto actor = CREATE_CLASS(Actor);
             actor->name = "light1";
             actor->transform.position = glm::vec3{ 3, 3, 3 };
@@ -52,6 +65,33 @@ namespace nc
         ENGINE.GetSystem<Gui>()->BeginFrame();
 
         m_scene->Update(dt);
+
+        ImGui::Begin("Scene");
+        ImGui::ColorEdit3("Ambient", glm::value_ptr(ambientColor));
+        ImGui::Separator();
+
+
+
+        for (auto& actor : m_actors)
+        {
+            if (ImGui::Selectable(actor->name.c_str(), actor->guiSelect))
+            {
+                std::for_each(m_actors.begin(), m_actors.end(), [](auto& a) { a->guiSelect = false; });
+                actor->guiSelect = true;
+            }
+        }
+        ImGui::End();
+
+
+
+        ImGui::Begin("Inspector");
+        auto iter = std::find_if(m_actors.begin(), m_actors.end(), [](auto& a) { return a->guiSelect; });
+        if (iter != m_actors.end())
+        {
+            (*iter)->ProcessGui();
+        }
+        ImGui::End();
+
         //m_scene->ProcessGui();
 
         auto actor = m_scene->GetActorByName<Actor>("actor1");
@@ -64,15 +104,7 @@ namespace nc
         material->ProcessGui();
         material->Bind();
 
-        material->GetProgram()->SetUniform("ambientLight", ambientLight);
-
-        //view matrix
-        glm::mat4 view = glm::lookAt(glm::vec3{ 0, 0, 3 }, glm::vec3{ 0, 0, 0 }, glm::vec3{ 0, 1, 0 });
-        material->GetProgram()->SetUniform("view", view);
-
-        //projection matrix
-        glm::mat4 projection = glm::perspective(glm::radians(70.0f), ENGINE.GetSystem<Renderer>()->GetWidth() / (float)ENGINE.GetSystem<Renderer>()->GetHeight(), 0.01f, 100.0f);
-        material->GetProgram()->SetUniform("projection", projection);
+        material->GetProgram()->SetUniform("ambientLight", ambientColor);
 
         ENGINE.GetSystem<Gui>()->EndFrame();
     }
