@@ -3,7 +3,6 @@
 #include "Renderer/Renderer.h"
 #include "Core/Math/Transform.h"
 #include <vector>
-
 namespace nc
 {
 	struct light_t
@@ -18,13 +17,11 @@ namespace nc
 		glm::vec3 position;
 		glm::vec3 direction;
 		glm::vec3 color;
-
 		float intensity;
 		float range;
 		float innerAngle;
 		float outerAngle;
 	};
-
 	class World04 : public World
 	{
 	public:
@@ -32,7 +29,6 @@ namespace nc
 		void Shutdown() override;
 		void Update(float dt) override;
 		void Draw(Renderer& renderer) override;
-
 	private:
 		float m_time = 0;
 		float m_speed = 5;

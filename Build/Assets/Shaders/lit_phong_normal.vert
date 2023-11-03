@@ -46,6 +46,9 @@ void main()
 	//makes the model/view/projection matrix for future calculations
 	mat4 mvp = projection * view * model;
 
+	otexcoord = vtexcoord;
+
+
 	//calculates final positions of vertices
 	gl_Position = mvp * vec4(vposition, 1.0);
 }

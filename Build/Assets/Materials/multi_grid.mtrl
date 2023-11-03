@@ -1,7 +1,7 @@
 {
   "program":"shaders/multi_lit_texture.prog",
   "textures": [ "textures/color_grid.png" ],
-  "diffuse": [ 1, 1, 1 ],
+  "albedo": [ 1, 1, 1 ],
   "color": [
     1,
     1,

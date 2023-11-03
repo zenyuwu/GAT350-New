@@ -167,5 +167,8 @@
     <None Include="..\..\Build\Assets\Shaders\refraction.vert">
       <Filter>Shaders\Cubemaps</Filter>
     </None>
+    <None Include="..\..\Build\Assets\Materials\test.mtrl">
+      <Filter>Materials</Filter>
+    </None>
   </ItemGroup>
 </Project>

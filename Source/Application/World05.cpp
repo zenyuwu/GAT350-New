@@ -28,18 +28,6 @@ namespace nc
             m_scene->Add(std::move(actor));
         }
 
-        //{ //creating squirrel
-        //    auto actor = CREATE_CLASS(Actor);
-        //    actor->name = "actor1";
-        //    actor->transform.position = glm::vec3{ 0, 0, 0 };
-        //    auto modelComponent = CREATE_CLASS(ModelComponent);
-        //    modelComponent->model = std::make_shared<Model>();
-        //    modelComponent->model->SetMaterial(GET_RESOURCE(Material, "materials/phong.mtrl"));
-        //    modelComponent->model->Load("models/squirrel.glb", glm::vec3{ 0, -0.7f, 0 }, glm::vec3{ 0 }, glm::vec3{ 0.4f });
-        //    actor->AddComponent(std::move(modelComponent));
-        //    m_scene->Add(std::move(actor));
-        //}
-
         { //creating light
             auto actor = CREATE_CLASS(Actor);
             actor->name = "light1";
@@ -65,9 +53,6 @@ namespace nc
 
     void World05::Update(float dt)
     {
-        //weirdge maple testing
-        m_time += dt;
-
         ENGINE.GetSystem<Gui>()->BeginFrame();
 
         m_scene->Update(dt);
@@ -75,30 +60,12 @@ namespace nc
 
         auto actor = m_scene->GetActorByName<Actor>("actor1");
 
-        //add in the transforms based on user input
-        //actor->transform.position.x etcetc
-
         //broken :((
         auto model = actor->GetComponent<ModelComponent>()->model;
         auto material = model->GetMaterial();
 
         material->ProcessGui();
         material->Bind();
-
-        material = GET_RESOURCE(Material, "materials/refraction.mtrl");
-        if (material) {
-            ImGui::Begin("Refraction");
-
-            //weirdge maple testing
-            m_refraction = 1 + std::fabs((std::sin(m_time)));
-
-            ImGui::DragFloat("IOR", &m_refraction, 0.01f, 1, 3);
-            auto program = material->GetProgram();
-            program->Use();
-            program->SetUniform("ior", m_refraction);
-
-            ImGui::End();
-        }
 
         ENGINE.GetSystem<Gui>()->EndFrame();
     }
