@@ -5,14 +5,14 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Source\Resource">
-      <UniqueIdentifier>{d88ddb19-3717-455c-9a8c-c100969e1a5b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Components">
       <UniqueIdentifier>{d31c96a5-6dd5-4a56-af72-8080a16222a7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\Event">
       <UniqueIdentifier>{d85ea573-45bb-49c6-8d62-9071767a0df6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Event\Resource">
+      <UniqueIdentifier>{d88ddb19-3717-455c-9a8c-c100969e1a5b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -55,10 +55,10 @@
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="Resource\Resource.h">
-      <Filter>Source\Resource</Filter>
+      <Filter>Source\Event\Resource</Filter>
     </ClInclude>
     <ClInclude Include="Resource\ResourceManager.h">
-      <Filter>Source\Resource</Filter>
+      <Filter>Source\Event\Resource</Filter>
     </ClInclude>
     <ClInclude Include="Components\Component.h">
       <Filter>Source\Components</Filter>

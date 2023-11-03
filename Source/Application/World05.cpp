@@ -11,6 +11,9 @@ namespace nc
     bool World05::Initialize()
     {
         m_scene = std::make_unique<Scene>();
+        //m_scene->Load("scenes/scene.json");
+        m_scene->Load("scenes/test.json");
+        m_scene->Initialize();
 
         { //creating camera
             auto actor = CREATE_CLASS(Actor);
@@ -25,17 +28,17 @@ namespace nc
             m_scene->Add(std::move(actor));
         }
 
-        { //creating squirrel
-            auto actor = CREATE_CLASS(Actor);
-            actor->name = "actor1";
-            actor->transform.position = glm::vec3{ 0, 0, 0 };
-            auto modelComponent = CREATE_CLASS(ModelComponent);
-            modelComponent->model = std::make_shared<Model>();
-            modelComponent->model->SetMaterial(GET_RESOURCE(Material, "materials/squirrel.mtrl"));
-            modelComponent->model->Load("models/squirrel.glb", glm::vec3{ 0, -0.7f, 0 }, glm::vec3{ 0 }, glm::vec3{ 0.4f });
-            actor->AddComponent(std::move(modelComponent));
-            m_scene->Add(std::move(actor));
-        }
+        //{ //creating squirrel
+        //    auto actor = CREATE_CLASS(Actor);
+        //    actor->name = "actor1";
+        //    actor->transform.position = glm::vec3{ 0, 0, 0 };
+        //    auto modelComponent = CREATE_CLASS(ModelComponent);
+        //    modelComponent->model = std::make_shared<Model>();
+        //    modelComponent->model->SetMaterial(GET_RESOURCE(Material, "materials/phong.mtrl"));
+        //    modelComponent->model->Load("models/squirrel.glb", glm::vec3{ 0, -0.7f, 0 }, glm::vec3{ 0 }, glm::vec3{ 0.4f });
+        //    actor->AddComponent(std::move(modelComponent));
+        //    m_scene->Add(std::move(actor));
+        //}
 
         { //creating light
             auto actor = CREATE_CLASS(Actor);
@@ -62,49 +65,40 @@ namespace nc
 
     void World05::Update(float dt)
     {
+        //weirdge maple testing
+        m_time += dt;
+
         ENGINE.GetSystem<Gui>()->BeginFrame();
 
         m_scene->Update(dt);
-
-        ImGui::Begin("Scene");
-        ImGui::ColorEdit3("Ambient", glm::value_ptr(ambientColor));
-        ImGui::Separator();
-
-
-
-        for (auto& actor : m_actors)
-        {
-            if (ImGui::Selectable(actor->name.c_str(), actor->guiSelect))
-            {
-                std::for_each(m_actors.begin(), m_actors.end(), [](auto& a) { a->guiSelect = false; });
-                actor->guiSelect = true;
-            }
-        }
-        ImGui::End();
-
-
-
-        ImGui::Begin("Inspector");
-        auto iter = std::find_if(m_actors.begin(), m_actors.end(), [](auto& a) { return a->guiSelect; });
-        if (iter != m_actors.end())
-        {
-            (*iter)->ProcessGui();
-        }
-        ImGui::End();
-
-        //m_scene->ProcessGui();
+        m_scene->ProcessGui();
 
         auto actor = m_scene->GetActorByName<Actor>("actor1");
 
         //add in the transforms based on user input
         //actor->transform.position.x etcetc
 
-        //uhh setting stuff in the material?
-        auto material = actor->GetComponent<ModelComponent>()->model->GetMaterial();
+        //broken :((
+        auto model = actor->GetComponent<ModelComponent>()->model;
+        auto material = model->GetMaterial();
+
         material->ProcessGui();
         material->Bind();
 
-        material->GetProgram()->SetUniform("ambientLight", ambientColor);
+        material = GET_RESOURCE(Material, "materials/refraction.mtrl");
+        if (material) {
+            ImGui::Begin("Refraction");
+
+            //weirdge maple testing
+            m_refraction = 1 + std::fabs((std::sin(m_time)));
+
+            ImGui::DragFloat("IOR", &m_refraction, 0.01f, 1, 3);
+            auto program = material->GetProgram();
+            program->Use();
+            program->SetUniform("ior", m_refraction);
+
+            ImGui::End();
+        }
 
         ENGINE.GetSystem<Gui>()->EndFrame();
     }

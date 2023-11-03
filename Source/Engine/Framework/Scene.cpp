@@ -1,6 +1,7 @@
 #include "Scene.h"
-#include "Framework/Components/CollisionComponent.h"
+#include "Framework/Components/LightComponent.h"
 #include "Framework/Components/CameraComponent.h"
+#include "Actor.h"
 
 namespace nc
 {
@@ -24,6 +25,19 @@ namespace nc
 
 	void Scene::Draw(Renderer& renderer)
 	{
+		// get light components
+		std::vector<LightComponent*> lights;
+		for (auto& actor : m_actors)
+		{
+			if (!actor->active) continue;
+
+			auto component = actor->GetComponent<LightComponent>();
+			if (component)
+			{
+				lights.push_back(component);
+			}
+		}
+
 		// get camera component
 		CameraComponent* camera = nullptr;
 		for (auto& actor : m_actors)
@@ -31,11 +45,7 @@ namespace nc
 			if (!actor->active) continue;
 
 			camera = actor->GetComponent<CameraComponent>();
-			if (camera) break; 
-		}
-		for (auto& actor : m_actors)
-		{
-			if (actor->active) actor->Draw(renderer);
+			if (camera) break;
 		}
 
 		// get all shader programs in the resource system
@@ -47,6 +57,23 @@ namespace nc
 
 			// set camera in shader program
 			if (camera) camera->SetProgram(program);
+
+			// set lights in shader program
+			int index = 0;
+			for (auto light : lights)
+			{
+				std::string name = "lights[" + std::to_string(index++) + "]";
+
+				light->SetProgram(program, name);
+			}
+
+			program->SetUniform("numLights", index);
+			program->SetUniform("ambientLight", ambientColor);
+		}
+
+		for (auto& actor : m_actors)
+		{
+			if (actor->active) actor->Draw(renderer);
 		}
 	}
 
@@ -89,7 +116,8 @@ namespace nc
 				std::string type;
 				READ_DATA(actorValue, type);
 
-				auto actor = CREATE_CLASS_BASE(Actor, type);
+				// this line broken :(
+				auto actor = nc::Factory::Instance().Create<nc::Actor>(type);
 				actor->Read(actorValue);
 
 				if (actor->prototype)
@@ -104,6 +132,31 @@ namespace nc
 			}
 		}
 
+	}
+
+	void Scene::ProcessGui()
+	{
+		ImGui::Begin("Scene");
+		ImGui::ColorEdit3("Ambient", glm::value_ptr(ambientColor));
+		ImGui::Separator();
+
+		for (auto& actor : m_actors)
+		{
+			if (ImGui::Selectable(actor->name.c_str(), actor->guiSelect))
+			{
+				std::for_each(m_actors.begin(), m_actors.end(), [](auto& a) { a->guiSelect = false; });
+				actor->guiSelect = true;
+			}
+		}
+		ImGui::End();
+
+		ImGui::Begin("Inspector");
+		auto iter = std::find_if(m_actors.begin(), m_actors.end(), [](auto& a) { return a->guiSelect; });
+		if (iter != m_actors.end())
+		{
+			(*iter)->ProcessGui();
+		}
+		ImGui::End();
 	}
 
 }

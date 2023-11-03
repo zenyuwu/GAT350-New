@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cubemap.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="Gui.h" />
     <ClInclude Include="Material.h" />
@@ -38,6 +39,7 @@
     <ClCompile Include="..\..\ThirdParty\imgui\imgui_impl_sdlrenderer.cpp" />
     <ClCompile Include="..\..\ThirdParty\imgui\imgui_tables.cpp" />
     <ClCompile Include="..\..\ThirdParty\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="Cubemap.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="Gui.cpp" />
     <ClCompile Include="Material.cpp" />

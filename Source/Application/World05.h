@@ -23,6 +23,7 @@ namespace nc
 		float m_time = 0;
 		float m_speed = 5;
 
+		float m_refraction{ 1 };
 		glm::vec3 ambientColor{ 1,1,1 };
 		//std::list<std::unique_ptr<Actor>> m_actors;
 	};

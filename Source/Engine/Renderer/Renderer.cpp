@@ -61,6 +61,7 @@ namespace nc
 		glEnable(GL_DEPTH_TEST);
 		glDepthFunc(GL_LESS);
 
+		//change which side of the face is culled based on if it's a cubemap or a model
 		glEnable(GL_CULL_FACE);
 		glCullFace(GL_BACK);
 		glFrontFace(GL_CCW);

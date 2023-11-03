@@ -104,7 +104,7 @@ namespace nc
 				std::string type;
 				READ_DATA(componentValue, type);
 
-				auto component = CREATE_CLASS_BASE(Component, type);
+				auto component = nc::Factory::Instance().Create<nc::Component>(type);
 				component->Read(componentValue);
 
 				AddComponent(std::move(component));

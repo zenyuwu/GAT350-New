@@ -28,7 +28,7 @@ namespace nc
 
 		glm::vec3 pos = m_owner->transform.position;
 		glm::vec3 forward = m_owner->transform.Forward();
-		view = glm::lookAt(pos, pos + forward, glm::vec3{ 0, 1, 0 });
+		view = glm::lookAt(pos, pos + forward, m_owner->transform.Up());
 		projection = glm::perspective(glm::radians(fov), aspect, near, far);
 
 	}
