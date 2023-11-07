@@ -28,7 +28,6 @@ namespace nc
 
 		view = glm::lookAt(m_owner->transform.position, m_owner->transform.position + m_owner->transform.Forward(), m_owner->transform.Up());
 		projection = glm::perspective(glm::radians(fov), aspect, near, far);
-
 	}
 
 	void CameraComponent::SetPerspective(float fov, float aspect, float near, float far)

@@ -179,14 +179,14 @@
     <None Include="..\..\Build\Assets\Materials\mybox.mtrl">
       <Filter>Materials</Filter>
     </None>
-    <None Include="..\..\Build\Assets\Materials\watershiba.mtrl">
-      <Filter>Materials</Filter>
+    <None Include="..\..\Build\Assets\Scenes\ogrescene.json">
+      <Filter>Scenes</Filter>
     </None>
     <None Include="..\..\Build\Assets\Materials\mirrorshiba.mtrl">
       <Filter>Materials</Filter>
     </None>
-    <None Include="..\..\Build\Assets\Scenes\ogrescene.json">
-      <Filter>Scenes</Filter>
+    <None Include="..\..\Build\Assets\Materials\watershiba.mtrl">
+      <Filter>Materials</Filter>
     </None>
   </ItemGroup>
 </Project>

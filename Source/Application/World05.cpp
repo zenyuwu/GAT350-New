@@ -12,8 +12,8 @@ namespace nc
     {
         m_scene = std::make_unique<Scene>();
         //m_scene->Load("scenes/scene.json");
-        //m_scene->Load("scenes/myscene.json");
-        m_scene->Load("scenes/ogrescene.json");
+        m_scene->Load("scenes/myscene.json");
+        //m_scene->Load("scenes/ogrescene.json");
         //m_scene->Load("scenes/test.json");
         m_scene->Initialize();
 

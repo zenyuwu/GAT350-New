@@ -1,7 +1,7 @@
 #version 430
 
 in layout(location = 0) vec3 vposition;
-in layout(location = 1) vec3 vnormal;
+in layout(location = 2) vec3 vnormal;
 
 out layout(location = 0) vec3 otexcoord;
 
@@ -32,3 +32,5 @@ void main()
 	mat4 mvp = projection * view * model;
 	gl_Position = mvp * vec4(vposition, 1.0);
 }
+
+//uwu

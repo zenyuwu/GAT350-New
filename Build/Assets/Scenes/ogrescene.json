@@ -43,7 +43,7 @@
 			"persistent": true,
 			"active": true,
 			"transform": {
-				"position": [ 0, 5, 0 ],
+				"position": [ 0, 2, 0 ],
 				"scale": [ 1, 1, 1 ],
 				"rotation": [ 0, 0, 0 ]
 			},
@@ -61,7 +61,7 @@
 			"persistent": true,
 			"active": true,
 			"transform": {
-				"position": [ 0, -5, 0 ],
+				"position": [ 0, -2, 0 ],
 				"scale": [ 1, 1, 1 ],
 				"rotation": [ 0, 0, 0 ]
 			},
@@ -69,7 +69,7 @@
 				{
 					"type": "ModelComponent",
 					"modelName": "models/ogre.obj",
-					"materialName": "materials/shiba.mtrl"
+					"materialName": "materials/ogre.mtrl"
 				}
 			]
 		}
