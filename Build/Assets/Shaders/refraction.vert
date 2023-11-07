@@ -12,7 +12,7 @@ uniform mat4 view;
 uniform mat4 projection;
 
 vec3 vreflect(vec3 i, vec3 n){
-	return i - (n * dot(i, n)) * 2; 
+	return i - (n * dot(i, n)) * 2;
 }
 
 void main()

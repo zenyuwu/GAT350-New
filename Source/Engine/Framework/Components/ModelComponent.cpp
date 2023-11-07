@@ -9,12 +9,11 @@ namespace nc
 	bool ModelComponent::Initialize()
 	{
 		if (!modelName.empty()) {
-			model = std::make_shared<Model>();
-			model->Load(modelName);
+			model = GET_RESOURCE(Model, modelName);
 		}
 
 		if (model && !materialName.empty()) {
-			model->SetMaterial(GET_RESOURCE(Material, materialName));
+			material = (GET_RESOURCE(Material, materialName));
 		}
 
 		return true;
@@ -27,12 +26,11 @@ namespace nc
 
 	void ModelComponent::Draw(Renderer& renderer)
 	{
-		auto material = model->GetMaterial();
 		material->Bind();
 		material->GetProgram()->SetUniform("model", m_owner->transform.GetMatrix());
 
 		glDepthMask(enableDepth);
-		//glCullFace(cullface);
+		glCullFace(cullface);
 
 		model->Draw();
 	}
@@ -43,14 +41,9 @@ namespace nc
 		READ_DATA(value, materialName);
 
 		READ_DATA(value, enableDepth);
-		//std::string cullfaceName;
-		//if (READ_NAME_DATA(value, "cullface", cullfaceName)) {
-		//	if (IsEqualIgnoreCase(cullfaceName, "front")) cullface = GL_FRONT;
-		//	//else if (IsEqualIgnoreCase(cullfaceName, "back")) cullface = GL_BACK;
-		//	//else if (IsEqualIgnoreCase(cullfaceName, "front_and_back")) cullface = GL_FRONT_AND_BACK;
-		//	//else if (IsEqualIgnoreCase(cullfaceName, "none")) cullface = GL_NONE;
-		//	//else LOG_ERROR("Invalid cullface value: {0}", cullfaceName);
-
-		//}
+		std::string cullfaceName;
+		if (READ_NAME_DATA(value, "cullface", cullfaceName)) {
+			if (stringUtils.IsEqualIgnoreCase(cullfaceName, "front")) cullface = GL_FRONT;
+		}
 	}
 }

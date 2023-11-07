@@ -165,14 +165,20 @@
     <ClInclude Include="World05.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Build\Assets\Materials\mirrorshiba.mtrl" />
     <None Include="..\..\Build\Assets\Materials\multi_grid.mtrl" />
+    <None Include="..\..\Build\Assets\Materials\mybox.mtrl" />
     <None Include="..\..\Build\Assets\Materials\ogre.mtrl" />
     <None Include="..\..\Build\Assets\Materials\phong.mtrl" />
     <None Include="..\..\Build\Assets\Materials\reflection.mtrl" />
     <None Include="..\..\Build\Assets\Materials\refraction.mtrl" />
+    <None Include="..\..\Build\Assets\Materials\shiba.mtrl" />
     <None Include="..\..\Build\Assets\Materials\skybox.mtrl" />
     <None Include="..\..\Build\Assets\Materials\squirrel.mtrl" />
     <None Include="..\..\Build\Assets\Materials\test.mtrl" />
+    <None Include="..\..\Build\Assets\Materials\watershiba.mtrl" />
+    <None Include="..\..\Build\Assets\Scenes\myscene.json" />
+    <None Include="..\..\Build\Assets\Scenes\ogrescene.json" />
     <None Include="..\..\Build\Assets\Scenes\scene.json" />
     <None Include="..\..\Build\Assets\Scenes\test.json" />
     <None Include="..\..\Build\Assets\Shaders\cubemap.frag" />

@@ -1,6 +1,7 @@
 #pragma once
 #include "RenderComponent.h"
 #include "Renderer/Model.h"
+#include "Core/StringUtils.h"
 
 namespace nc
 {
@@ -16,8 +17,14 @@ namespace nc
 	public:
 		std::string modelName;
 		std::string materialName;
+
 		res_t<Model> model;
+		res_t<Material> material;
+
 		bool enableDepth = true;
-		//GLint cullface = GL_BACK;
+		GLint cullface = GL_BACK;
+
+	private:
+		StringUtils stringUtils;
 	};
 }

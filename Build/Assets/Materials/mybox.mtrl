@@ -1,0 +1,12 @@
+{
+  "program": "shaders/skybox.prog",
+  "cubemap": "ForbiddenCity",
+  "cubemaps": [
+    "textures/ForbiddenCity/posx.jpg",
+    "textures/ForbiddenCity/negx.jpg",
+    "textures/ForbiddenCity/posy.jpg",
+    "textures/ForbiddenCity/negy.jpg",
+    "textures/ForbiddenCity/posz.jpg",
+    "textures/ForbiddenCity/negz.jpg"
+  ]
+}

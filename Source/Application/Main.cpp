@@ -21,26 +21,6 @@ int main(int argc, char* argv[])
 	auto world = make_unique<nc::World05>();
 	world->Initialize();
 
-	// string testing stuff :D
-
-	nc::StringUtils stringUtils;
-	std::string str1 = "Hello World";
-	std::string str2 = "Hello World";
-
-	std::cout << "ToUpper: " << stringUtils.ToUpper(str1) << std::endl;
-	std::cout << "ToLower: " << stringUtils.ToLower(str2) << std::endl;
-
-	if (stringUtils.IsEqualIgnoreCase(str1, str2)) {
-		std::cout << "IsEqualIgnoreCase: True" << std::endl;
-	}
-	else {
-		std::cout << "IsEqualIgnoreCase: False" << std::endl;
-	}
-
-	for (int i = 0; i < 5; i++) {
-		std::cout << "CreateUnique: " << stringUtils.CreateUnique("Kitty") << std::endl; 
-	}
-
 	// main loop
 	bool quit = false;
 	while (!quit)
