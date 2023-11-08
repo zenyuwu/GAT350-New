@@ -3,6 +3,7 @@
 #include "Input/InputSystem.h"
 #include <glm/glm/gtc/type_ptr.hpp>
 #include <glm/glm/gtx/color_space.hpp>
+#include "../Engine/Core/StringUtils.h"
 
 #define INTERLEAVE
 
@@ -52,6 +53,17 @@ namespace nc
             m_scene->Add(std::move(actor));
         }
 
+        StringUtils stringutils;
+
+        for (int i = 0; i < 30; i++) {
+            auto actor = CREATE_CLASS_BASE(Actor, "tree");
+            actor->name = stringutils.CreateUnique("tree");
+            actor->transform.position = glm::vec3{ randomf(-10,10), 0, randomf(-10,10) };
+            actor->transform.scale = glm::vec3{ randomf(0.5f, 2.0f), 1, randomf(0.5f, 2.0f) };
+            actor->Initialize();
+            m_scene->Add(std::move(actor));
+        }
+
         return true;
     }
 
@@ -86,6 +98,8 @@ namespace nc
             ImGui::DragFloat("IOR", &m_refraction)
         }
         */
+
+
 
         ENGINE.GetSystem<Gui>()->EndFrame();
     }

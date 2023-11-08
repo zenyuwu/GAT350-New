@@ -21,7 +21,7 @@
 		},
 		{
 			"type": "Actor",
-			"name": "actor1",
+			"name": "sprite",
 			"persistent": true,
 			"active": true,
 			"transform": {
@@ -32,14 +32,14 @@
 			"components": [
 				{
 					"type": "ModelComponent",
-					"modelName": "models/shiba.obj",
-					"materialName": "materials/mirrorshiba.mtrl"
+					"modelName": "models/quad.obj",
+					"materialName": "materials/sprite.mtrl"
 				}
 			]
 		},
 		{
 			"type": "Actor",
-			"name": "actor2",
+			"name": "actor1",
 			"persistent": true,
 			"active": true,
 			"transform": {
@@ -51,15 +51,16 @@
 				{
 					"type": "ModelComponent",
 					"modelName": "models/shiba.obj",
-					"materialName": "materials/watershiba.mtrl"
+					"materialName": "materials/shiba.mtrl"
 				}
 			]
 		},
 		{
 			"type": "Actor",
-			"name": "actor3",
+			"name": "tree",
 			"persistent": true,
 			"active": true,
+			"prototype": true,
 			"transform": {
 				"position": [ 0, -5, 0 ],
 				"scale": [ 1, 1, 1 ],
@@ -68,8 +69,8 @@
 			"components": [
 				{
 					"type": "ModelComponent",
-					"modelName": "models/shiba.obj",
-					"materialName": "materials/shiba.mtrl"
+					"modelName": "models/quad.obj",
+					"materialName": "materials/tree.mtrl"
 				}
 			]
 		}
