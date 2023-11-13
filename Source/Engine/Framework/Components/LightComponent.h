@@ -1,6 +1,7 @@
 #pragma once
 #include "Component.h"
 #include "Renderer/Program.h"
+#include "Core/StringUtils.h"
 
 namespace nc
 {
@@ -29,5 +30,8 @@ namespace nc
 		float range = 20;
 		float innerAngle = 20;
 		float outerAngle = 30;
+
+	private:
+		StringUtils s;
 	};
 }

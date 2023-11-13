@@ -1,0 +1,59 @@
+{
+	"actors": [
+		{
+			"type": "Actor",
+			"name": "sprite",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 0, 0, 0 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "models/quad.obj",
+					"materialName": "materials/sprite.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "actor1",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 0, 5, 0 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "models/shiba.obj",
+					"materialName": "materials/shiba.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "cube",
+			"persistent": true,
+			"active": true,
+			"prototype": true,
+			"transform": {
+				"position": [ 0, -5, 0 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "models/cube.obj",
+					"materialName": "materials/framebuffer.mtrl"
+				}
+			]
+		}
+	]
+}

@@ -40,6 +40,9 @@
     <ClInclude Include="Cubemap.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="Framebuffer.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Texture.cpp">
@@ -94,6 +97,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Cubemap.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Framebuffer.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
