@@ -42,9 +42,9 @@ namespace nc
 		res_t<Texture> normalTexture;
 		res_t<Texture> emissiveTexture;
 		res_t<Texture> cubemapTexture;
+		res_t<Texture> depthTexture;
 
 	private:
 		res_t<Program> m_program;
-		//std::vector<res_t<Texture>> m_textures;
 	};
 }

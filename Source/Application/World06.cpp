@@ -101,7 +101,7 @@ namespace nc
             // -------------
             // 0001
             // ????
-            (effect) ? m_params |= RAINBOW_MASK : m_params ^= RAINBOW_MASK;
+            (effect) ? m_params |= RAINBOW_MASK : m_params ^= RAINBOW_MASK; // instead of ^=, &= ~
         }
         
         ImGui::End();

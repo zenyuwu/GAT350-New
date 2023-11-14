@@ -33,8 +33,8 @@ vec4 colortint(in vec4 color, in vec4 tint){
     return vec4(mix(color.rgb, tint.rgb, tint.a), color.a);
 }
 
-float rand(vec2 co){
-	return fract(sin(dot(co.xy, vec2(12.9898,78.233))) * 43758.5453);
+float rand(vec2 st){
+	return fract(sin(dot(st.xy, vec2(12.9898,78.233))) * 43758.5453);
 }
 
 vec4 grain(in vec4 color){
