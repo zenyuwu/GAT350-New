@@ -27,8 +27,8 @@
 			"transform": {
 				"position": [
 					0,
-					1,
-					2
+					1.5,
+					3
 				],
 				"rotation": [
 					0,
@@ -55,10 +55,10 @@
 			"type": "Actor",
 			"name": "light",
 			"persistent": true,
-			"active": true,
 			"transform": {
 				"position": [ 0, 3, 0 ],
-				"rotation": [ 90, 0, 0 ]
+				"rotation": [ 60, 30, 0 ],
+				"scale": [0.1,0.1,0.1]
 			},
 			"components": [
 				{
@@ -67,9 +67,14 @@
 					"color": [ 1, 1, 1 ],
 					"intensity": 1,
 					"range": 20,
-					"innerangle": 10.0,
-					"outerangle": 30.0,
+					"innerangle": 10,
+					"outerangle": 30,
 					"castShadow": true
+				},
+				{
+					"type": "ModelComponent",
+					"modelName": "models/quad.obj",
+					"materialName": "materials/ui_light.mtrl"
 				}
 			]
 		},
@@ -88,10 +93,6 @@
 					"type": "ModelComponent",
 					"modelName": "fantasy/obj/SF_Bld_Elven_House_01.obj",
 					"materialName": "fantasy/fantasy.mtrl"
-				},
-				{
-					"type": "RotateComponent",
-					"euler": [ 0, 30, 0 ]
 				}
 			]
 		},
@@ -110,10 +111,6 @@
 					"type": "ModelComponent",
 					"modelName": "fantasy/obj/SF_Env_Elven_Flower_01.obj",
 					"materialName": "fantasy/fantasy.mtrl"
-				},
-				{
-					"type": "RotateComponent",
-					"euler": [ 0, 30, 0 ]
 				}
 			]
 		},
@@ -123,19 +120,32 @@
 			"persistent": true,
 			"active": true,
 			"transform": {
-				"position": [ -2, 0, 0 ],
-				"scale": [ 1, 1, 1 ],
-				"rotation": [ 0, 0, 0 ]
+				"position": [ -2, 0.8, 0 ],
+				"scale": [ 0.5, 0.5, 0.5 ]
 			},
 			"components": [
 				{
 					"type": "ModelComponent",
 					"modelName": "fantasy/obj/SF_Bld_Elven_Bridge_01.obj",
 					"materialName": "fantasy/fantasy.mtrl"
-				},
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "ground",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -4, 0.3, 3 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
 				{
-					"type": "RotateComponent",
-					"euler": [ 0, 30, 0 ]
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_Tile_Grass_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
 				}
 			]
 		},
@@ -143,8 +153,9 @@
 			"type": "Actor",
 			"name": "depth_debug",
 			"persistent": true,
+			"active": false,
 			"transform": {
-				"position": [ 0, 0, 0 ],
+				"position": [ 2.2, 1.7, 0 ],
 				"scale": [ 1, 1, 1 ],
 				"rotation": [ 0, 0, 0 ]
 			},

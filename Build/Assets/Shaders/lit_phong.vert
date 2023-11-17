@@ -9,11 +9,14 @@ in layout(location = 2) vec3 vnormal;
 out layout(location = 0) vec3 oposition;
 out layout(location = 1) vec3 onormal;
 out layout(location = 2) vec2 otexcoord;
+out layout(location = 3) vec4 oshadowcoord;
 
 //uniform variables set in World04.cpp
 uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
+
+uniform mat4 shadowVP;
 
 //material properties
 uniform struct Material{
@@ -38,6 +41,8 @@ void main()
 	onormal = normalize(mat3(modelView) * vnormal);
 	//modifies the texture coordinates based on tiling and offset
 	otexcoord = (vtexcoord * material.tiling) + material.offset;
+
+	oshadowcoord = shadowVP * vec4(vposition, 1);
 
 	//makes the model/view/projection matrix for future calculations
 	mat4 mvp = projection * view * model;

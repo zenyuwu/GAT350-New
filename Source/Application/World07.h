@@ -33,7 +33,7 @@ namespace nc
 
 
 		float m_refraction{ 1 };
-		glm::vec3 ambientColor{ 1,1,1 };
+		glm::vec3 ambientColor{ 0.5 };
 		glm::vec4 colortintcolor{ 1,1,1,1 };
 		glm::vec2 resolution;
 	};

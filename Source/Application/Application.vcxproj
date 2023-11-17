@@ -185,6 +185,7 @@
     <None Include="..\..\Build\Assets\Materials\squirrel.mtrl" />
     <None Include="..\..\Build\Assets\Materials\test.mtrl" />
     <None Include="..\..\Build\Assets\Materials\tree.mtrl" />
+    <None Include="..\..\Build\Assets\Materials\ui_light.mtrl" />
     <None Include="..\..\Build\Assets\Materials\watershiba.mtrl" />
     <None Include="..\..\Build\Assets\Scenes\framebufferscene.json" />
     <None Include="..\..\Build\Assets\Scenes\myscene.json" />
