@@ -34,6 +34,5 @@ namespace nc
 
 		eProjectionType projectionType = Perspective;
 		float size{ 8 };
-		StringUtils s;
 	};
 }

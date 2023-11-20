@@ -1,8 +1,8 @@
 #version 430
 
-#define POINT 0 
+#define POINT		0 
 #define DIRECTIONAL 1
-#define SPOT 2
+#define SPOT		2
 
 #define ALBEDO_TEXTURE_MASK		(1 << 0) // 0001
 #define SPECULAR_TEXTURE_MASK	(1 << 1) // 0010
@@ -46,6 +46,7 @@ uniform struct Light{
 uniform vec3 ambientLight;
 uniform int numLights = 3;
 uniform float shadowBias = 0.005;
+uniform bool castShadow;
 
 layout(binding = 0) uniform sampler2D albedoTexture;
 layout(binding = 1) uniform sampler2D specularTexture;
@@ -105,7 +106,7 @@ void main()
 	// set ambient light + emissive colors
 	ocolor = vec4(ambientLight, 1) * albedoColor + emissiveColor;
  
-	float shadow = calculateShadow(fshadowcoord, shadowBias);
+	float shadow = (castShadow) ? calculateShadow(fshadowcoord, shadowBias) : 1;
 
 	// set lights
 	for (int i = 0; i < numLights; i++)

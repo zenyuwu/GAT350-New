@@ -1,7 +1,7 @@
 #include "StringUtils.h"
 
 namespace nc {
-	std::string StringUtils::ToUpper(std::string str) {
+	std::string ToUpper(std::string str) {
 		//making a new string for the result so we're not changing stuff while iterating through it
 		std::string result = str;
 		for (size_t i = 0; i < str.length(); i++) {
@@ -11,7 +11,7 @@ namespace nc {
 		return result;
 	}
 
-	std::string StringUtils::ToLower(std::string str) {
+	std::string ToLower(std::string str) {
 		//making a new string for the result so we're not changing stuff while iterating through it
 		std::string result = str;
 		for (size_t i = 0; i < str.length(); i++) {
@@ -21,7 +21,7 @@ namespace nc {
 		return result;
 	}
 
-	bool StringUtils::IsEqualIgnoreCase(std::string str1, std::string str2) {
+	bool IsEqualIgnoreCase(std::string str1, std::string str2) {
 		//turning both strings to lowercase then comparing them
 		return ToLower(str1) == ToLower(str2);
 	}

@@ -106,6 +106,7 @@ namespace nc
 
 				auto component = nc::Factory::Instance().Create<nc::Component>(type);
 				component->Read(componentValue);
+				component->m_owner = this;
 
 				AddComponent(std::move(component));
 			}

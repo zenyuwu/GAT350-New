@@ -31,7 +31,7 @@ namespace nc
 			glm::mat4 ms = glm::scale(scale);
 			glm::mat4 mr = glm::mat4_cast(rotation);
 			glm::mat4 mt = glm::translate(position);
-			glm::mat4 mx = mt * ms * mr;
+			glm::mat4 mx = mt * mr * ms;
 
 			return mx;
 		}

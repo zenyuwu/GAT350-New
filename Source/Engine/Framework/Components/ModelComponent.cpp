@@ -14,6 +14,7 @@ namespace nc
 
 		if (model && !materialName.empty()) {
 			material = (GET_RESOURCE(Material, materialName));
+			material->GetProgram()->isLit = isProgramLit;
 		}
 
 		return true;
@@ -28,6 +29,7 @@ namespace nc
 	{
 		material->Bind();
 		material->GetProgram()->SetUniform("model", m_owner->transform.GetMatrix());
+		material->GetProgram()->SetUniform("castShadow", castShadow);
 
 		glDepthMask(enableDepth);
 		glCullFace(cullface);
@@ -51,7 +53,9 @@ namespace nc
 
 		std::string cullfaceName;
 		if (READ_NAME_DATA(value, "cullface", cullfaceName)) {
-			if (stringUtils.IsEqualIgnoreCase(cullfaceName, "front")) cullface = GL_FRONT;
+			if (IsEqualIgnoreCase(cullfaceName, "front")) cullface = GL_FRONT;
 		}
+
+		READ_NAME_DATA(value, "isLit", isProgramLit);
 	}
 }

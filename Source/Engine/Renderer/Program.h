@@ -40,6 +40,9 @@ namespace nc
 	public:
 		GLuint m_program = 0;
 		std::map<std::string, GLint> m_uniforms;
+		std::string programName;
+		bool isLit = true;
+		bool isLogged = false;
 	};
 }
 

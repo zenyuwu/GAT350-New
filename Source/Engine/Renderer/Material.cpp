@@ -23,33 +23,27 @@ namespace nc
 		// get program resource
 		m_program = GET_RESOURCE(Program, program);
 
-		std::cout << "params: " << params << "\n";
-
 		// read the textures
 		std::string albedoTextureName;
 		if (READ_NAME_DATA(document, "albedoTexture", albedoTextureName)) {
 			params |= ALBEDO_TEXTURE_MASK;
 			albedoTexture = GET_RESOURCE(Texture, albedoTextureName);
 		}
-		std::cout << "params: " << params << "\n";
 		std::string specularTextureName;
 		if (READ_NAME_DATA(document, "specularTexture", specularTextureName)) {
 			params |= SPECULAR_TEXTURE_MASK;
 			specularTexture = GET_RESOURCE(Texture, specularTextureName);
 		}
-		std::cout << "params: " << params << "\n";
 		std::string emissiveTextureName;
 		if (READ_NAME_DATA(document, "emissiveTexture", emissiveTextureName)) {
 			params |= EMISSIVE_TEXTURE_MASK;
 			emissiveTexture = GET_RESOURCE(Texture, emissiveTextureName);
 		}
-		std::cout << "params: " << params << "\n";
 		std::string normalTextureName;
 		if (READ_NAME_DATA(document, "normalTexture", normalTextureName)) {
 			params |= NORMAL_TEXTURE_MASK;
 			normalTexture = GET_RESOURCE(Texture, normalTextureName);
 		}
-		std::cout << "params: " << params << "\n";
 		std::string cubemapName;
 		if (READ_NAME_DATA(document, "cubemap", cubemapName)) {
 			params |= CUBEMAP_TEXTURE_MASK;
@@ -57,7 +51,6 @@ namespace nc
 			READ_DATA(document, cubemaps);
 			cubemapTexture = GET_RESOURCE(Cubemap, cubemapName, cubemaps);
 		}
-		std::cout << "params: " << params << "\n";
 		READ_DATA(document, albedo);
 		READ_DATA(document, specular);
 		READ_DATA(document, emissive);
@@ -71,6 +64,10 @@ namespace nc
 	void Material::Bind()
 	{
 		m_program->Use();
+		if (!hasLogged) {
+			INFO_LOG("Material using: " << m_program->programName);
+			hasLogged = true;
+		}
 		m_program->SetUniform("material.params", params);
 		m_program->SetUniform("material.albedo", albedo);
 		m_program->SetUniform("material.specular", specular);
@@ -101,6 +98,10 @@ namespace nc
 		}
 		if (depthTexture) {
 			depthTexture->SetActive(GL_TEXTURE5);
+			if (!hasLoggedDepth) {
+				INFO_LOG("Setting depth texture...");
+				hasLoggedDepth = true;
+			}
 			depthTexture->Bind();
 		}
 	}

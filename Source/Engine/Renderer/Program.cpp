@@ -14,6 +14,7 @@ namespace nc
 
 	bool Program::Create(std::string filename, ...)
 	{
+		programName = filename;
 		// load program json document
 		rapidjson::Document document;
 		if (!Json::Load(filename, document))

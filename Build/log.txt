@@ -6,16 +6,31 @@ INFO: Factory.h(74) Class registered: CameraController
 INFO: Factory.h(74) Class registered: CameraComponent
 INFO: Factory.h(74) Class registered: Actor
 INFO: Main.cpp(16) Initialize Engine...
-WARNING: Program.cpp(165) Could not find uniform location: view
-WARNING: Program.cpp(165) Could not find uniform location: projection
-WARNING: Program.cpp(165) Could not find uniform location: lights[0].type
-WARNING: Program.cpp(165) Could not find uniform location: lights[0].position
-WARNING: Program.cpp(165) Could not find uniform location: lights[0].direction
-WARNING: Program.cpp(165) Could not find uniform location: lights[0].color
-WARNING: Program.cpp(165) Could not find uniform location: lights[0].intensity
-WARNING: Program.cpp(165) Could not find uniform location: lights[0].range
-WARNING: Program.cpp(165) Could not find uniform location: lights[0].innerAngle
-WARNING: Program.cpp(165) Could not find uniform location: lights[0].outerAngle
-WARNING: Program.cpp(165) Could not find uniform location: shadowBias
-WARNING: Program.cpp(165) Could not find uniform location: numLights
-WARNING: Program.cpp(165) Could not find uniform location: ambientLight
+INFO: Scene.cpp(46) Using Program: shaders/lit_phong.prog
+INFO: Scene.cpp(46) Using Program: shaders/shadow_depth.prog
+WARNING: Program.cpp(166) Could not find uniform location: view
+WARNING: Program.cpp(166) Could not find uniform location: projection
+WARNING: Program.cpp(166) Could not find uniform location: lights[0].type
+WARNING: Program.cpp(166) Could not find uniform location: lights[0].position
+WARNING: Program.cpp(166) Could not find uniform location: lights[0].direction
+WARNING: Program.cpp(166) Could not find uniform location: lights[0].color
+WARNING: Program.cpp(166) Could not find uniform location: lights[0].intensity
+WARNING: Program.cpp(166) Could not find uniform location: lights[0].range
+WARNING: Program.cpp(166) Could not find uniform location: lights[0].innerAngle
+WARNING: Program.cpp(166) Could not find uniform location: lights[0].outerAngle
+WARNING: Program.cpp(166) Could not find uniform location: castShadow
+WARNING: Program.cpp(166) Could not find uniform location: shadowBias
+WARNING: Program.cpp(166) Could not find uniform location: numLights
+WARNING: Program.cpp(166) Could not find uniform location: ambientLight
+INFO: Scene.cpp(46) Using Program: shaders/unlit_sprite.prog
+INFO: Material.cpp(68) Material using: shaders/unlit_sprite.prog
+WARNING: Program.cpp(166) Could not find uniform location: material.params
+WARNING: Program.cpp(166) Could not find uniform location: material.specular
+WARNING: Program.cpp(166) Could not find uniform location: material.emissive
+WARNING: Program.cpp(166) Could not find uniform location: material.shininess
+INFO: Material.cpp(102) Setting depth texture...
+WARNING: Program.cpp(166) Could not find uniform location: castShadow
+INFO: Material.cpp(68) Material using: shaders/lit_phong.prog
+INFO: Material.cpp(102) Setting depth texture...
+INFO: Material.cpp(68) Material using: shaders/unlit_sprite.prog
+INFO: Material.cpp(102) Setting depth texture...

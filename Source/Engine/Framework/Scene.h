@@ -36,10 +36,11 @@ namespace nc
 
 		friend class Actor;
 
-		glm::vec3 ambientColor{ 1,1,1 };
+		glm::vec3 ambientColor{ 0.5 };
 
 		std::list<std::unique_ptr<Actor>> m_actors;
 	private:
+		bool isLogged = false;
 		World* m_game = nullptr;
 	};
 

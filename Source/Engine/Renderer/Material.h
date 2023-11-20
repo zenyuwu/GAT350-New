@@ -46,5 +46,7 @@ namespace nc
 
 	private:
 		res_t<Program> m_program;
+		bool hasLogged = false;
+		bool hasLoggedDepth = false;
 	};
 }

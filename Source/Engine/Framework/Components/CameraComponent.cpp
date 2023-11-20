@@ -90,7 +90,7 @@ namespace nc
 
 		std::string projectionTypeName;
 		READ_NAME_DATA(value, "projectionType", projectionTypeName);
-		if (s.IsEqualIgnoreCase("orthographic", projectionTypeName)) projectionType = Orthographic;
+		if (IsEqualIgnoreCase("orthographic", projectionTypeName)) projectionType = Orthographic;
 		READ_DATA(value, size);
 	}
 }

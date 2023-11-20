@@ -26,7 +26,6 @@ namespace nc
 	void Scene::Draw(Renderer& renderer)
 	{
 		// get light components
-
 		auto lights = GetComponents<LightComponent>();
 
 		// get camera component
@@ -42,16 +41,37 @@ namespace nc
 		{
 			program->Use();
 
+			//test code uwu
+			if (!program->isLogged) {
+				INFO_LOG("Using Program: " << program->programName);
+				//GLint count;
+				//glGetProgramiv(program->m_program, GL_ACTIVE_UNIFORMS, &count);
+				//for (GLint i = 0; i < count; i++)
+				//{
+				//	const GLsizei bufSize = 256;
+				//	GLchar name[bufSize];
+				//	GLsizei length;
+				//	GLint size;
+				//	GLenum type;
+				//	glGetActiveUniform(program->m_program, (GLuint)i, bufSize, &length, &size, &type, name);
+				//	std::cout << "Active uniform: " << name << std::endl;
+				//}
+
+				program->isLogged = true;
+			}
+
 			// set camera in shader program
 			if (camera) camera->SetProgram(program);
 
+			if (!program->isLit) { break; }
 			// set lights in shader program
 			int index = 0;
 			for (auto light : lights)
 			{
 				std::string name = "lights[" + std::to_string(index++) + "]";
 
-				light->SetProgram(program, name);
+				glm::mat4 view = (camera) ? camera->view : glm::mat4(1);
+				light->SetProgram(program, name, view);
 			}
 
 			program->SetUniform("numLights", index);
@@ -103,7 +123,6 @@ namespace nc
 				std::string type;
 				READ_DATA(actorValue, type);
 
-				// this line broken :(
 				auto actor = nc::Factory::Instance().Create<nc::Actor>(type);
 				actor->Read(actorValue);
 

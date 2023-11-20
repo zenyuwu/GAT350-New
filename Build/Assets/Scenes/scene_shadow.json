@@ -2,26 +2,6 @@
 	"actors": [
 		{
 			"type": "Actor",
-			"name": "skybox",
-			"active": false,
-			"persistent": true,
-			"transform": {
-				"position": [ 0, 0, 1 ],
-				"scale": [ 2, 2, 2 ],
-				"rotation": [ 0, 0, 0 ]
-			},
-			"components": [
-				{
-					"type": "ModelComponent",
-					"modelName": "Models/cube.obj",
-					"materialName": "Materials/skybox.mtrl",
-					"enableDepth": false,
-					"cullface": "front"
-				}
-			]
-		},
-		{
-			"type": "Actor",
 			"name": "Camera",
 			"persistent": true,
 			"transform": {
@@ -58,7 +38,7 @@
 			"transform": {
 				"position": [ 0, 3, 0 ],
 				"rotation": [ 60, 30, 0 ],
-				"scale": [0.1,0.1,0.1]
+				"scale": [ 0.1, 0.1, 0.1 ]
 			},
 			"components": [
 				{
@@ -74,7 +54,46 @@
 				{
 					"type": "ModelComponent",
 					"modelName": "models/quad.obj",
-					"materialName": "materials/ui_light.mtrl"
+					"materialName": "materials/ui_light.mtrl",
+					"isLit": false
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "ground",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -4, 0.3, 3 ],
+				"scale": [ 3, 3, 3 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_Tile_Grass_01.obj",
+					"materialName": "fantasy/fantasy.mtrl",
+					"castShadow": true
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "depth_debug",
+			"persistent": true,
+			"transform": {
+				"position": [ 2.2, 1.7, 0 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "models/quad.obj",
+					"materialName": "materials/sprite.mtrl",
+					"isLit": false,
+					"castShadow": false
 				}
 			]
 		},
@@ -85,13 +104,29 @@
 			"active": true,
 			"transform": {
 				"position": [ 0, 0, 0 ],
-				"scale": [ 0.1, 0.1, 0.1 ],
-				"rotation": [ 0, 0, 0 ]
+				"scale": [ 0.5, 0.5, 0.5 ]
 			},
 			"components": [
 				{
 					"type": "ModelComponent",
 					"modelName": "fantasy/obj/SF_Bld_Elven_House_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "bridge",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 0, 0, 0 ],
+				"scale": [ 0.5, 0.5, 0.5 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Elven_Bridge_01.obj",
 					"materialName": "fantasy/fantasy.mtrl"
 				}
 			]
@@ -111,59 +146,6 @@
 					"type": "ModelComponent",
 					"modelName": "fantasy/obj/SF_Env_Elven_Flower_01.obj",
 					"materialName": "fantasy/fantasy.mtrl"
-				}
-			]
-		},
-		{
-			"type": "Actor",
-			"name": "bridge",
-			"persistent": true,
-			"active": true,
-			"transform": {
-				"position": [ -2, 0.8, 0 ],
-				"scale": [ 0.5, 0.5, 0.5 ]
-			},
-			"components": [
-				{
-					"type": "ModelComponent",
-					"modelName": "fantasy/obj/SF_Bld_Elven_Bridge_01.obj",
-					"materialName": "fantasy/fantasy.mtrl"
-				}
-			]
-		},
-		{
-			"type": "Actor",
-			"name": "ground",
-			"persistent": true,
-			"active": true,
-			"transform": {
-				"position": [ -4, 0.3, 3 ],
-				"scale": [ 1, 1, 1 ],
-				"rotation": [ 0, 0, 0 ]
-			},
-			"components": [
-				{
-					"type": "ModelComponent",
-					"modelName": "fantasy/obj/SF_Env_Tile_Grass_01.obj",
-					"materialName": "fantasy/fantasy.mtrl"
-				}
-			]
-		},
-		{
-			"type": "Actor",
-			"name": "depth_debug",
-			"persistent": true,
-			"active": false,
-			"transform": {
-				"position": [ 2.2, 1.7, 0 ],
-				"scale": [ 1, 1, 1 ],
-				"rotation": [ 0, 0, 0 ]
-			},
-			"components": [
-				{
-					"type": "ModelComponent",
-					"modelName": "models/quad.obj",
-					"materialName": "materials/sprite.mtrl"
 				}
 			]
 		}

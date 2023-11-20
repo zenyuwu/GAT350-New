@@ -27,6 +27,6 @@ namespace nc
 		GLint cullface = GL_BACK;
 
 	private:
-		StringUtils stringUtils;
+		bool isProgramLit = true;
 	};
 }
