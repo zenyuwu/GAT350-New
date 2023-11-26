@@ -6,7 +6,7 @@
 			"persistent": true,
 			"transform": {
 				"position": [
-					0.5,
+					3,
 					2.5,
 					3
 				],
@@ -36,8 +36,8 @@
 			"name": "light",
 			"persistent": true,
 			"transform": {
-				"position": [ 0, 3, 0 ],
-				"rotation": [ 27, -180, 0 ],
+				"position": [ 0, 4, 0 ],
+				"rotation": [ 38, -180, 0 ],
 				"scale": [ 0.1, 0.1, 0.1 ]
 			},
 			"components": [
@@ -65,7 +65,7 @@
 			"persistent": true,
 			"active": true,
 			"transform": {
-				"position": [ -4, 0.3, 3 ],
+				"position": [ -5, 0, 3 ],
 				"scale": [ 3, 3, 3 ],
 				"rotation": [ 0, 0, 0 ]
 			},
@@ -73,8 +73,7 @@
 				{
 					"type": "ModelComponent",
 					"modelName": "fantasy/obj/SF_Env_Tile_Grass_01.obj",
-					"materialName": "fantasy/fantasy.mtrl",
-					"castShadow": false
+					"materialName": "fantasy/fantasy.mtrl"
 				}
 			]
 		},
@@ -83,7 +82,7 @@
 			"name": "depth_debug",
 			"persistent": true,
 			"transform": {
-				"position": [ 2.2, 2.5, 0 ],
+				"position": [ 4, 3, 0 ],
 				"scale": [ 1, 1, 1 ],
 				"rotation": [ 0, 0, 0 ]
 			},
@@ -99,52 +98,18 @@
 		},
 		{
 			"type": "Actor",
-			"name": "house",
+			"name": "tent",
 			"persistent": true,
 			"active": true,
 			"transform": {
-				"position": [ 0, 0, 0 ],
-				"scale": [ 0.05, 0.05, 0.05 ]
+				"position": [ 3.5, 0, 0 ],
+				"scale": [ 0.4, 0.4, 0.4 ]
 			},
 			"components": [
 				{
 					"type": "ModelComponent",
-					"modelName": "fantasy/obj/SF_Bld_Castle_Keep_02.obj",
-					"materialName": "fantasy/fantasy.mtrl"
-				}
-			]
-		},
-		{
-			"type": "Actor",
-			"name": "castle",
-			"persistent": true,
-			"active": true,
-			"transform": {
-				"position": [ 0, 0, 0 ],
-				"scale": [ 0.05, 0.05, 0.05 ]
-			},
-			"components": [
-				{
-					"type": "ModelComponent",
-					"modelName": "fantasy/obj/SF_Bld_Castle_Hall_03.obj",
-					"materialName": "fantasy/fantasy.mtrl"
-				}
-			]
-		},
-		{
-			"type": "Actor",
-			"name": "bridge",
-			"persistent": true,
-			"active": false,
-			"transform": {
-				"position": [ 2, 0.8, 0 ],
-				"scale": [ 0.5, 0.5, 0.5 ]
-			},
-			"components": [
-				{
-					"type": "ModelComponent",
-					"modelName": "fantasy/obj/SF_Bld_Elven_Bridge_01.obj",
-					"materialName": "fantasy/fantasy.mtrl"
+					"modelName": "fantasy/obj/SF_Bld_Tent_03.obj",
+					"materialName": "fantasy/fantasy_cel.mtrl"
 				}
 			]
 		},
@@ -154,7 +119,7 @@
 			"persistent": true,
 			"active": false,
 			"transform": {
-				"position": [ 2, 0, 0 ],
+				"position": [ 4, 0, 0 ],
 				"scale": [ 1, 1, 1 ],
 				"rotation": [ 0, 0, 0 ]
 			},
@@ -162,7 +127,25 @@
 				{
 					"type": "ModelComponent",
 					"modelName": "fantasy/obj/SF_Env_Elven_Flower_01.obj",
-					"materialName": "fantasy/fantasy.mtrl"
+					"materialName": "fantasy/cel.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "sphere",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 4, 0, 0 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "models/sphere.obj",
+					"materialName": "fantasy/cel.mtrl"
 				}
 			]
 		}

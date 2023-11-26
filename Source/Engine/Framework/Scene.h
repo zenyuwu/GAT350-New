@@ -18,6 +18,7 @@ namespace nc
 		void Draw(Renderer& renderer);
 
 		void Add(std::unique_ptr<Actor> actor);
+		void Remove(Actor* actor);
 		void RemoveAll(bool force = false);
 
 		bool Load(const std::string& filename);
@@ -35,11 +36,14 @@ namespace nc
 		void ProcessGui();
 
 		friend class Actor;
+		friend class Editor;
 
 		glm::vec3 ambientColor{ 0.5 };
 
+		//maple's m_actors is private
 		std::list<std::unique_ptr<Actor>> m_actors;
 	private:
+		float m_dt{ 0 };
 		bool isLogged = false;
 		World* m_game = nullptr;
 	};

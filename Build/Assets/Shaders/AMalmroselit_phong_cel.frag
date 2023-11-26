@@ -46,6 +46,11 @@ uniform struct Light{
 uniform vec3 ambientLight;
 uniform int numLights = 3;
 uniform float shadowBias = 0.005;
+
+//uniforms for cel stuff :)
+uniform int celLevels = 5;
+uniform float celSpecularCutoff = 0.3;
+const float celScaleFactor = 1.0 / celLevels;
 //uniform bool castShadow = false;
 
 layout(binding = 0) uniform sampler2D albedoTexture;
@@ -80,7 +85,9 @@ void phong(in Light light, in vec3 position, in vec3 normal, out vec3 diffuse, o
 	}
 
 	float intensity = max(dot(lightDir, normal), 0) * spotIntensity;
-	diffuse = (light.color * intensity);
+	//calculating cel intensity
+	float celIntensity = floor(intensity * celLevels) * celScaleFactor;
+	diffuse = (light.color * celIntensity);
 
 	//SPECULAR
 	specular = vec3(0);
@@ -94,6 +101,8 @@ void phong(in Light light, in vec3 position, in vec3 normal, out vec3 diffuse, o
 		intensity = max(dot(halfwayDir, normal), 0);
 
 		intensity = pow(intensity, material.shininess);
+		//clamping the specular to be either on or off
+		intensity = (intensity < celSpecularCutoff) ? 0 : 1;
 		specular = vec3(intensity * spotIntensity);
 	}
 }
@@ -119,6 +128,8 @@ void main()
 		float attenuation = (lights[i].type == DIRECTIONAL) ? 1 : attenuation(lights[i].position, fposition, lights[i].range);
  
 		phong(lights[i], fposition, fnormal, diffuse, specular);
+
+
 		ocolor += ((vec4(diffuse, 1) * albedoColor) + (vec4(specular, 1)) * specularColor) * lights[i].intensity * attenuation * shadow;
 	}
 }

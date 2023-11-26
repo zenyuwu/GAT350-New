@@ -42,7 +42,7 @@ void main()
 	//modifies the texture coordinates based on tiling and offset
 	otexcoord = (vtexcoord * material.tiling) + material.offset;
 
-	oshadowcoord = shadowVP * vec4(vposition, 1);
+	oshadowcoord = shadowVP * model * vec4(vposition, 1);
 
 	//makes the model/view/projection matrix for future calculations
 	mat4 mvp = projection * view * model;
