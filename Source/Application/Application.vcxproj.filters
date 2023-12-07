@@ -143,5 +143,8 @@
     <None Include="..\..\Build\Assets\Scenes\cel_test.json">
       <Filter>Scenes</Filter>
     </None>
+    <None Include="..\..\Build\Assets\Scenes\FINALSCENE.json">
+      <Filter>Scenes</Filter>
+    </None>
   </ItemGroup>
 </Project>

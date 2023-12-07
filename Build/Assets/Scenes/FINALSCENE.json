@@ -1,0 +1,298 @@
+{
+	"actors": [
+		{
+			"type": "Actor",
+			"name": "Camera",
+			"persistent": true,
+			"transform": {
+				"position": [
+					9,
+					3,
+					3
+				],
+				"rotation": [
+					0,
+					180,
+					0
+				]
+			},
+			"components": [
+				{
+					"type": "CameraComponent",
+					"fov": 70,
+					"near": 0.1,
+					"far": 105
+				},
+				{
+					"type": "CameraController",
+					"speed": 1,
+					"yaw": 0,
+					"pitch": 0
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "light",
+			"persistent": true,
+			"transform": {
+				"position": [ 0, 4, 0 ],
+				"rotation": [ 38, -180, 0 ],
+				"scale": [ 0.1, 0.1, 0.1 ]
+			},
+			"components": [
+				{
+					"type": "LightComponent",
+					"lightType": "directional",
+					"color": [ 1, 1, 1 ],
+					"intensity": 1,
+					"range": 20,
+					"innerangle": 10,
+					"outerangle": 30,
+					"castShadow": true
+				},
+				{
+					"type": "ModelComponent",
+					"modelName": "models/quad.obj",
+					"materialName": "materials/ui_light.mtrl",
+					"isLit": false
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "ground",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -5, 0, 3 ],
+				"scale": [ 3, 3, 3 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_Tile_Grass_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "depth_debug",
+			"persistent": true,
+			"transform": {
+				"position": [ 4, 3, 0 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "models/quad.obj",
+					"materialName": "materials/sprite.mtrl",
+					"isLit": false,
+					"castShadow": false
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "tent",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 10, 0, -4 ],
+				"rotation": [ 0, -90, 0 ],
+				"scale": [ 1, 1, 1 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Tent_03.obj",
+					"materialName": "fantasy/fantasy_cel.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "flower1",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 3, 0, -12 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_Elven_Flower_01.obj",
+					"materialName": "fantasy/fantasy_cel.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "flower2",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 8, 0, -12 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_Elven_Flower_02.obj",
+					"materialName": "fantasy/fantasy_cel.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "flower3",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 5, 0, -5 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_Elven_Flower_03.obj",
+					"materialName": "fantasy/fantasy_cel.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "flower4",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 10, 0, -3 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_Elven_Flower_04.obj",
+					"materialName": "fantasy/fantasy_cel.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "tree",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 6.5, 0, -6 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_Tree_Snow_01.obj",
+					"materialName": "fantasy/fantasy_cel.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "tree2",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 0, 0, -10 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_Tree_Snow_02.obj",
+					"materialName": "fantasy/fantasy_cel.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "tree3",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 2.5, 0, -5.5 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_Tree_Snow_03.obj",
+					"materialName": "fantasy/fantasy_cel.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "tree4",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 5, 0, -10 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_Tree_Snow_04.obj",
+					"materialName": "fantasy/fantasy_cel.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "tree5",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 10, 0, -9 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_Tree_Snow_05.obj",
+					"materialName": "fantasy/fantasy_cel.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "tree6",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 10, 0, -9 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_Tree_Snow_06.obj",
+					"materialName": "fantasy/fantasy_cel.mtrl"
+				}
+			]
+		}
+	]
+}

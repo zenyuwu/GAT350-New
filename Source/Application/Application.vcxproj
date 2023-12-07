@@ -168,6 +168,7 @@
     <None Include="..\..\Build\Assets\Materials\sprite.mtrl" />
     <None Include="..\..\Build\Assets\Materials\ui_light.mtrl" />
     <None Include="..\..\Build\Assets\Scenes\cel_test.json" />
+    <None Include="..\..\Build\Assets\Scenes\FINALSCENE.json" />
     <None Include="..\..\Build\Assets\Scenes\framebufferscene.json" />
     <None Include="..\..\Build\Assets\Scenes\scene_editor.json" />
     <None Include="..\..\Build\Assets\Scenes\scene_shadow.json" />

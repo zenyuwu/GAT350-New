@@ -12,7 +12,7 @@ namespace nc
     {
         m_scene = std::make_unique<Scene>();
         m_scene->Load("scenes/scene_editor.json");
-        m_scene->Load("scenes/cel_test.json");
+        m_scene->Load("scenes/FINALSCENE.json");
         m_scene->Initialize();
 
         m_editor = std::make_unique<Editor>();
